@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //Prints 10 names starting at index pageNum*10
     function printList(resultsList, pageNum) {
         let startIndex = (pageNum - 1)*10;
+        
+        console.log('startIndex= ' + startIndex);
+        console.log('pageNum= ' + pageNum );
         //clear list
         while (displayedStudents.length != 0) {
             ul.removeChild(displayedStudents[0]);
@@ -97,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pageButtonDiv.removeChild(pageButtonDiv.firstChild);
             
         }
+        
         createPaginationButtons(queryResults.children);      
         printList(queryResults.children, 1);
 
@@ -131,8 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     pageButtonDiv.addEventListener('click', (e) => {
+        console.log('e.target.textContent= ' +e.target.textContent);
         const text = e.target.textContent;
-        printList(text);
+        printList(studentList, text);
     });
     
 });
